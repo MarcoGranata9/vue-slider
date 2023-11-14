@@ -29,17 +29,11 @@ createApp ({
             ],
             currentIndex: 0,
             interval:"",
+            hover: false,
         }
     },    
-    created() { 
-       this.interval = setInterval(() => {
-            if (this.currentIndex === this.slides.length -1) {
-                this.currentIndex = 0        
-            } else {
-                this.currentIndex++
-            }
-            
-        }, 3000);
+    created() {
+        this.autoPlay()
     },
     methods: {
         showPrev: function() {
@@ -59,6 +53,19 @@ createApp ({
         showImage: function(index) {
             this.currentIndex = index             
         },
+        autoPlay: function () {
+            this.interval = setInterval(() => {
+                if (this.currentIndex === this.slides.length -1) {
+                    this.currentIndex = 0        
+                } else {
+                    this.currentIndex++
+                }
+                
+            }, 3000);
+        },
+        stopAutoPlay: function() {
+            clearInterval(this.interval)
+        }
     },    
 
 }).mount("#app")
