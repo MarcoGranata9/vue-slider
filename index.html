@@ -31,7 +31,7 @@
                     <div class="next" @click="showNext"></div>
 
                     <div v-for="(img, index) in slides" class="thumb" :class="index === currentIndex ? 'active' : ''" @click="showImage(index)">
-                        <img :src="img.image" alt="" />
+                        <img :src="img.image" :alt="img.title"/>
                     </div>
                 </div>
 
